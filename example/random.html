@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ball-collision</title>
+
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /**
+       * canvas 画布应当指定样式宽、高，不会影响动画绘制时的计算
+       */
+      .canvas-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas_wrapper" class="canvas-wrapper"></canvas>
+
+    <script src="../dist/ball-collision.umd.js"></script>
+    <script>
+      var _canvas = document.getElementById('canvas_wrapper')
+
+      // 初始化
+      new BallCollision({
+        canvas: _canvas,
+        balls: createRandomBalls(10, 30, 50),
+        speedMin: -5, // 单位：px
+        speedMax: 5, // 单位：px
+        bgColor: 'random' // bgColor支持随机，也可以指定（合法的颜色值）
+      })
+
+      /**
+       * 随机生成小球位置、大小、颜色
+       * @param {Number} ballCount 小球数量
+       * @param {Number} ballMin 小球半径最小值
+       * @param {Number} ballMax 小球半径最大值
+       */
+      function createRandomBalls(ballCount, ballMin, ballMax) {
+        var rectCanvas = _canvas.getBoundingClientRect()
+        var balls = []
+
+        while (balls.length < ballCount) {
+          balls.push(createBall(balls, ballMin, ballMax, rectCanvas))
+        }
+        return balls
+      }
+
+      function createBall(balls, ballMin, ballMax, rectCanvas) {
+        var r = random(ballMin, ballMax)
+        var x = random(r, rectCanvas.width - r)
+        var y = random(r, rectCanvas.height - r)
+        var bgColor = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')'
+
+        // 随机比较麻烦的即：考虑初始的位置重叠问题
+        for (var i = 0; i < balls.length; i++) {
+          var dx = balls[i].x - x
+          var dy = balls[i].y - y
+          var distance = Math.sqrt(dx * dx + dy * dy)
+
+          if (distance < balls[i].r + r) {
+            return createBall(balls, ballMin, ballMax, rectCanvas)
+          }
+        }
+
+        return {
+          x: x,
+          y: y,
+          r: r,
+          bgColor: bgColor,
+        }
+      }
+
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min) * 100) / 100 + min
+      }
+    </script>
+  </body>
+</html>
