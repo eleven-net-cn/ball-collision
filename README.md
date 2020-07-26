@@ -242,3 +242,80 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min) * 100) / 100 + min
 }
 ```
+
+## React & hooks & typescript
+
+```js
+import React, { useRef, useEffect } from 'react'
+import styled from 'styled-components'
+import BallCollision from '@eleven.fe/ball-collision'
+
+const CanvasWrapper = styled.canvas`
+  width: 100%;
+  height: 100vh;
+`
+
+const balls = [
+  {
+    x: 50, // 圆心 x 坐标，单位：px
+    y: 50, // 圆心 y 坐标，单位：px
+    r: 45, // 小球半径，单位：px
+    bgColor: 'random',
+    imgSrc: 'https://mat1.gtimg.com/sports/nba/logo/1602/13.png'
+  },
+  {
+    x: 125,
+    y: 140,
+    r: 45,
+    bgColor: 'random',
+    imgSrc: 'https://mat1.gtimg.com/sports/nba/logo/1602/13.png'
+  },
+  {
+    x: 200,
+    y: 60,
+    r: 45,
+    bgColor: 'random',
+    imgSrc: 'https://mat1.gtimg.com/sports/nba/logo/1602/13.png'
+  },
+  {
+    x: 220,
+    y: 160,
+    r: 45,
+    bgColor: 'random',
+    imgSrc: 'https://mat1.gtimg.com/sports/nba/logo/1602/13.png'
+  },
+  {
+    x: 160,
+    y: 260,
+    r: 45,
+    bgColor: 'random',
+    imgSrc: 'https://mat1.gtimg.com/sports/nba/logo/1602/13.png'
+  }
+]
+
+export default function Ball() {
+  let canvasEl = useRef < HTMLCanvasElement > null
+
+  useEffect(() => {
+    // 初始化
+    canvasEl &&
+      new BallCollision({
+        canvas: canvasEl,
+        balls,
+        speedMin: -2,
+        speedMax: 2,
+        bgColor: 'random'
+      })
+  }, [])
+
+  return (
+    <>
+      <CanvasWrapper
+        ref={(el: any) => {
+          canvasEl = el
+        }}
+      />
+    </>
+  )
+}
+```
