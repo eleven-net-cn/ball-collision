@@ -3,7 +3,7 @@
  * @Author: Eleven
  * @Date: 2020-07-24 15:04:41
  * @Last Modified by: Eleven
- * @Last Modified time: 2020-07-25 18:42:11
+ * @Last Modified time: 2020-07-26 01:49:52
  */
 
 import { CollisionConfig, BallSetting } from './types'
@@ -60,6 +60,15 @@ class Collision {
   private readonly docEl: HTMLElement
   private readonly designWidth: number
 
+  /**
+   * @param canvas 画板 HTMLElement
+   * @param balls 指定的小球集合，允许单独指定配置
+   * @param speedMin 最小位移速度，单位：px，默认：-2
+   * @param speedMax 最大位移速度，单位：px，默认：2
+   * @param bgColor canvas 画布背景颜色，默认：'transparent' 透明
+   * @param docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
+   * @param designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
+   */
   constructor({
     canvas,
     balls = [],

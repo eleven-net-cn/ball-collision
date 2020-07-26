@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ball-collision</title>
+
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .wrapper {
+        max-width: 640px;
+        height: 100%;
+        margin: 0 auto;
+      }
+
+      /**
+       * canvas 画布应当指定样式宽、高，不会影响动画绘制时的计算
+       */
+      .canvas-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <canvas id="canvas_wrapper" class="canvas-wrapper"></canvas>
+    </div>
+
+    <script src="./lib/ball-collision.umd.js"></script>
+    <script>
+      /**
+       * 1、配置 x、y、r 时，注意不要让小球的位置重叠
+       * 2、移动端设备，不需要考虑设备像素比，
+       *    即：x、y、r 等不需要乘 2、乘 3（因为，内部已自动做了canvas的适配）
+       */
+      var balls = [
+        {
+          r: 222 / 3 / 2, // 圆心 x 坐标，单位：px
+          x: 22 + 40, // 圆心 y 坐标，单位：px
+          y: 55, // 小球半径，单位：px
+          imgSrc: './images/basketball.jpg',
+        },
+        {
+          r: 222 / 3 / 2,
+          x: 109 + 37,
+          y: 55,
+          imgSrc: './images/basketball.jpg',
+        },
+        {
+          r: 228 / 3 / 2,
+          x: 193 + 38,
+          y: 55,
+          imgSrc: './images/basketball.jpg',
+        },
+        {
+          r: 222 / 3 / 2,
+          x: 276 + 37,
+          y: 55,
+          imgSrc: './images/basketball.jpg',
+        },
+        {
+          r: 222 / 3 / 2,
+          x: 35 + 37,
+          y: 138,
+          imgSrc: './images/basketball.jpg',
+        },
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 240 / 3 / 2,
+          x: 116 + 37,
+          y: 138,
+        },
+        // 喜马儿童
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 222 / 3 / 2,
+          x: 200 + 37,
+          y: 138,
+        },
+        // 西贝
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 222 / 3 / 2,
+          x: 10 + 37,
+          y: 220,
+        },
+        // 必胜客
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 222 / 3 / 2,
+          x: 279 + 37,
+          y: 138,
+        },
+
+        // 奇迹文学
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 222 / 3 / 2,
+          x: 89 + 37,
+          y: 220,
+        },
+        // 肯德基
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 198 / 3 / 2,
+          x: 169 + 33,
+          y: 220,
+        },
+        // 芒果tv
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 180 / 3 / 2,
+          x: 240 + 30,
+          y: 220,
+        },
+        // 屈臣氏
+        {
+          imgSrc: './images/basketball.jpg',
+          r: 180 / 3 / 2,
+          x: 305 + 30,
+          y: 220,
+        },
+      ]
+
+      /**
+       * 初始化（所有位置、尺寸，以 375 设计稿做参照，单位：px）
+       *  - 因为，canvas 只认 px，为了适配所有尺寸屏幕，内部实现类似 REM 的缩放效果。
+       *  - 移动端优先，所有的尺寸、速度等参数，均以 375 的设计稿为基准，通过 designWidth 参数指定设计稿宽度。
+       *  - 如果你的移动端页面，在 PC 端展示时，有设置页面的最大宽度（例如：640），那么此时，docEl 参数可以帮助你做适配。
+       */
+      new BallCollision({
+        canvas: document.getElementById('canvas_wrapper'),
+        balls: balls,
+        speedMin: -2, // 单位：px
+        speedMax: 2, // 单位：px
+        bgColor: '#f2f2f2', // bgColor支持随机，也可以指定（合法的颜色值）
+        // docEl、designWidth 是自动处理页面尺寸适配的关键参数
+        // docEl: document.documentElement, // 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement，如果页面有最大宽度，那么 docEl 在处理适宽时有用武之地
+        docEl: document.querySelector('.wrapper'),
+        designWidth: 375, // 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
+      })
+    </script>
+  </body>
+</html>

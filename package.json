@@ -1,6 +1,6 @@
 {
   "name": "@eleven.fe/ball-collision",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "小球撞击动画，canvas 绘制。",
   "keywords": [],
   "main": "dist/ball-collision.umd.js",
@@ -12,7 +12,7 @@
   "author": "Eleven",
   "repository": {
     "type": "git",
-    "url": "https:git@github.com:Eleven90/ball-collision.git"
+    "url": "https://github.com/Eleven90/ball-collision"
   },
   "license": "MIT",
   "engines": {
@@ -21,7 +21,7 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src && npm run cp",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
@@ -32,7 +32,8 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "cp": "rm -rf example/lib/ball-collision.umd.js && cp dist/ball-collision.umd.js example/lib"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

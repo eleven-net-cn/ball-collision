@@ -4,17 +4,17 @@
  *  - balls 指定的小球集合，允许单独指定配置
  *  - speedMin 最小位移速度，单位：px，默认：-2
  *  - speedMax 最大位移速度，单位：px，默认：2
- *  - bgColor canvas 画布背景颜色，默认：'transparent' 透明
+ *  - bgColor canvas 画布背景颜色，默认：'transparent' 透明（合法的颜色值或 'random'）
  *  - docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
  *  - designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
  */
 export interface CollisionConfig {
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement | any
   balls: BallSetting[]
   speedMin?: number
   speedMax?: number
   bgColor?: string
-  docEl?: HTMLElement
+  docEl?: HTMLElement | any
   designWidth?: number
 }
 
@@ -25,7 +25,7 @@ export interface CollisionConfig {
  *  - r 小球半径
  *  - img 小球对应图片（Image）
  *  - imgSrc 小球对应图片的 src（BASE64或 http 链接）
- *  - bgColor 小球背景色
+ *  - bgColor 小球背景色（合法的颜色值或 'random'）
  *  - velX 水平位移速度
  *  - velY 垂直位移速度
  *  - speedMin 最小位移速度
@@ -56,7 +56,7 @@ export interface BallSetting {
  *  - velY 垂直位移速度
  *  - speedMin 最小位移速度
  *  - speedMax 最大位移速度
- *  - bgColor 小球背景色
+ *  - bgColor 小球背景色（合法的颜色值或 'random'）
  */
 export interface BallConfig {
   ctx: CanvasRenderingContext2D
