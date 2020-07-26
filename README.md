@@ -248,14 +248,14 @@ function random(min, max) {
 ```js
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import BallCollision from '@eleven.fe/ball-collision'
+import BallCollision, { BallSetting } from '@eleven.fe/ball-collision'
 
 const CanvasWrapper = styled.canvas`
   width: 100%;
   height: 100vh;
 `
 
-const balls = [
+const balls: BallSetting[] = [
   {
     x: 50, // 圆心 x 坐标，单位：px
     y: 50, // 圆心 y 坐标，单位：px
