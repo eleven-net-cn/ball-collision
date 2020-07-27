@@ -6,7 +6,7 @@
 
 - 纯 js 库（gzipped: 2.7 KB）
 - 支持 typescript
-- canvas、window.cancelAnimationFrame 绘制动画
+- canvas、window.requestAnimationFrame 绘制动画
 - canvas 在移动端高清屏的模糊问题内部已处理，不会有图片模糊的困扰
 - 针对移动端所有尺寸屏幕，内部实现了类似 REM 的缩放机制，会自动做缩放处理
 - 如果你的页面并不总是与设备屏幕等宽，例如：你的移动端页面，在 PC 端展示时，有设置最大宽度。那么此时，你必须要配置 `docEl` 参数，该参数的 clientWidth 应当等于页面宽度
