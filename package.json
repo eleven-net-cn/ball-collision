@@ -1,8 +1,14 @@
 {
   "name": "@eleven.fe/ball-collision",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "小球撞击动画，canvas 绘制。",
-  "keywords": [],
+  "keywords": [
+    "撞击",
+    "小球",
+    "canvas",
+    "ball",
+    "collision"
+  ],
   "main": "dist/ball-collision.umd.js",
   "module": "dist/ball-collision.es5.js",
   "typings": "dist/types/index.d.ts",
