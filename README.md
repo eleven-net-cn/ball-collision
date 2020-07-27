@@ -14,13 +14,17 @@
 
 ## Example
 
-[example/random_mobile.html](./example/random_mobile.html)
+1. 位置、背景色、尺寸等全随机
 
-![](./example/images/example/random.gif)
+    [example/random_mobile.html](./example/random_mobile.html)
 
-[example/index_mobile.html](./example/index_mobile.html)
+    ![](./example/images/example/random.gif)
 
-![](./example/images/example/ball.gif)
+2. 普通示例
+
+    [example/index_mobile.html](./example/index_mobile.html)
+
+    ![](./example/images/example/ball.gif)
 
 ## Installation
 
@@ -243,7 +247,7 @@ function random(min, max) {
 }
 ```
 
-## React & hooks & typescript
+## Using in React & Hooks & Typescript
 
 ```js
 import React, { useRef, useEffect } from 'react'
@@ -255,12 +259,13 @@ const CanvasWrapper = styled.canvas`
   height: 100vh;
 `
 
+// 小球初始配置
 const balls: BallSetting[] = [
   {
     x: 50, // 圆心 x 坐标，单位：px
     y: 50, // 圆心 y 坐标，单位：px
     r: 45, // 小球半径，单位：px
-    bgColor: 'random',
+    bgColor: 'random', // 背景色随机
     imgSrc: 'https://mat1.gtimg.com/sports/nba/logo/1602/13.png'
   },
   {
@@ -294,7 +299,7 @@ const balls: BallSetting[] = [
 ]
 
 export default function Ball() {
-  let canvasEl = useRef < HTMLCanvasElement > null
+  let canvasEl = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
     // 初始化
@@ -304,7 +309,7 @@ export default function Ball() {
         balls,
         speedMin: -2,
         speedMax: 2,
-        bgColor: 'random'
+        bgColor: 'random',
       })
   }, [])
 
