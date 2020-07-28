@@ -1,6 +1,6 @@
 {
   "name": "@eleven.fe/ball-collision",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "小球撞击动画，canvas 绘制。",
   "keywords": [
     "撞击",
