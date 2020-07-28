@@ -14,17 +14,17 @@
 
 ## Example
 
-1. 位置、背景色、尺寸等全随机
+1. 气泡撞击
+
+    [example/index_mobile.html](./example/index_mobile.html)
+
+    ![](./example/images/example/bubble.gif)
+
+2. 位置、背景色、尺寸等全随机
 
     [example/random_mobile.html](./example/random_mobile.html)
 
     ![](./example/images/example/random.gif)
-
-2. 普通示例
-
-    [example/index_mobile.html](./example/index_mobile.html)
-
-    ![](./example/images/example/ball.gif)
 
 ## Installation
 
