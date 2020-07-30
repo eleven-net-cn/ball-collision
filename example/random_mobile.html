@@ -2,7 +2,8 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Test ball-collision</title>
 
     <style>
@@ -21,7 +22,7 @@
       }
 
       /**
-       * canvas 画布应当指定样式宽、高，不会影响动画绘制时的计算
+       * canvas 画布应当指定样式宽、高，画布内容会随之缩放。
        */
       .canvas-wrapper {
         width: 100%;
@@ -31,10 +32,11 @@
   </head>
   <body>
     <div class="wrapper">
+      <!-- 先准备一个 canvas 标签。css 样式可以随意指定，画布内容会随之缩放。 -->
       <canvas id="canvas_wrapper" class="canvas-wrapper"></canvas>
     </div>
 
-    <script src="./lib/ball-collision.umd.js"></script>
+    <script src="../dist/ball-collision.umd.js"></script>
     <script>
       var _canvas = document.getElementById('canvas_wrapper')
 

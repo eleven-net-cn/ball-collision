@@ -1,22 +1,22 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global.BallCollision = factory());
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.BallCollision = factory());
 }(this, (function () { 'use strict';
 
     /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
+    Copyright (c) Microsoft Corporation.
 
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
 
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
 
     var __assign = function() {
@@ -549,14 +549,6 @@
 
     var lodash_debounce = debounce;
 
-    /*
-     * @Desc: 小球撞击动画 —— canvas
-     * @Author: Eleven
-     * @Date: 2020-07-24 15:04:41
-     * @Last Modified by: Eleven
-     * @Last Modified time: 2020-07-26 01:49:52
-     */
-    var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
     /**
      * 创建绘图
      *  - 移动端保持高清：https://www.html5rocks.com/en/tutorials/canvas/hidpi/
@@ -585,6 +577,15 @@
     function randomRgba() {
         return "rgb(" + random(0, 255) + ", " + random(0, 255) + ", " + random(0, 255) + ")";
     }
+    var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+
+    /*
+     * @Desc: 小球撞击动画 —— canvas
+     * @Author: Eleven
+     * @Date: 2020-07-24 15:04:41
+     * @Last Modified by: Eleven
+     * @Last Modified time: 2020-07-30 17:58:19
+     */
     var Collision = /** @class */ (function () {
         /**
          * @param canvas 画板 HTMLElement
@@ -652,7 +653,7 @@
          */
         Collision.prototype._create = function () {
             var _this = this;
-            var docWidth = this.docEl.clientWidth; // 页面可是区域的宽度
+            var docWidth = this.docEl.clientWidth; // 页面可视区域的宽度（或实际的页面最大宽度）
             var rateScale = docWidth / this.designWidth; // 相对设计稿的缩放倍率
             // 小球半径、圆心坐标，各种尺寸屏幕缩放适配
             var ballsComputed = this.ballsSetting.map(function (ball) {

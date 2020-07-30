@@ -5,12 +5,22 @@
 ## Introduction
 
 - 纯 js 库（gzipped: 2.7 KB）
+
 - 支持 typescript
+
 - canvas、window.requestAnimationFrame 绘制动画
-- canvas 在移动端高清屏的模糊问题内部已处理，不会有图片模糊的困扰
-- 针对移动端所有尺寸屏幕，内部实现了类似 REM 的缩放机制，会自动做缩放处理
-- 如果你的页面并不总是与设备屏幕等宽，例如：你的移动端页面，在 PC 端展示时，有设置最大宽度。那么此时，你必须要配置 `docEl` 参数，该参数的 clientWidth 应当等于页面宽度
-- 所有配置参数，默认均是 375 设计稿下的数值。你可以通过配置参数 `designWidth` 来指定设计稿，指定后，则所有参数均为该设计稿下的数值
+
+- canvas 在移动端高清屏的模糊问题内部已处理，不会有图片模糊的困扰。
+
+- 针对移动端所有尺寸屏幕，内部实现了类似 REM 的缩放机制，会自动做缩放处理。
+
+- 如果你的页面并不总是与设备屏幕等宽，例如：你的移动端页面，在 PC 端展示时，有设置最大宽度、剩余空间留白。
+
+    那么此时，你必须要配置 `docEl` 参数，该参数的 clientWidth 应当等于实际的页面宽度。（否则 canvas 画布会与页面等宽，样式展示上会有偏差。）
+
+- 所有尺寸、位置等都是在指定设计稿下的数值。
+
+    可以使用参数 `designWidth` 来指定设计稿宽度，默认：375。如果你的设计稿是 750，那么参数配置为 750 后，小球半径、圆心位置等使用设计稿数值即可。
 
 ## Example
 
@@ -100,7 +110,14 @@ interface BallSetting {
 
 ## Getting Started
 
-示例一：一般使用
+先准备一个 canvas 标签，并设置 css 样式。
+
+```html
+<!-- 先准备一个 canvas 标签。css 样式可以随意指定，画布内容会随之缩放。 -->
+<canvas id="canvas_wrapper" class="canvas-wrapper"></canvas>
+```
+
+###### 初始化示例一：普通配置
 
 ```js
 import BallCollision from '@eleven.fe/ball-collision'
@@ -109,6 +126,7 @@ import BallCollision from '@eleven.fe/ball-collision'
  * 1、配置 x、y、r 时，注意不要让小球的位置重叠
  * 2、移动端设备，不需要考虑设备像素比，
  *    即：x、y、r 等不需要乘 2、乘 3（因为，内部已自动做了canvas的适配）
+ * 3、所有配置的位置、尺寸等数值，与指定的宽度设计稿相匹配，可以通过 designWidth 参数指定设计稿宽度，默认：375。
  */
 const balls = [
   {
@@ -138,7 +156,7 @@ new BallCollision({
 })
 ```
 
-示例二：通过 img 参数指定图片
+###### 初始化示例二：通过 img 参数指定图片
 
 ```js
 import BallCollision from '@eleven.fe/ball-collision'
@@ -157,6 +175,7 @@ function createCollision() {
    * 1、配置 x、y、r 时，注意不要让小球的位置重叠
    * 2、移动端设备，不需要考虑设备像素比，
    *    即：x、y、r 等不需要乘 2、乘 3（因为，内部已自动做了canvas的适配）
+   * 3、所有配置的位置、尺寸等数值，与指定的宽度设计稿相匹配，可以通过 designWidth 参数指定设计稿宽度，默认：375。
    */
   const balls = [
     {
@@ -187,7 +206,7 @@ function createCollision() {
 }
 ```
 
-示例三：小球位置、大小随机
+###### 初始化示例三：小球位置、大小、背景色随机
 
 ```js
 import BallCollision from '@eleven.fe/ball-collision'

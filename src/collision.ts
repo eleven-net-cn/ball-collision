@@ -3,48 +3,13 @@
  * @Author: Eleven
  * @Date: 2020-07-24 15:04:41
  * @Last Modified by: Eleven
- * @Last Modified time: 2020-07-26 01:49:52
+ * @Last Modified time: 2020-07-30 17:58:19
  */
 
 import { CollisionConfig, BallSetting } from './types'
 import Ball from './Ball'
 import debounce from 'lodash.debounce'
-
-const resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize'
-
-/**
- * 创建绘图
- *  - 移动端保持高清：https://www.html5rocks.com/en/tutorials/canvas/hidpi/
- */
-function setupCanvas(canvas: HTMLCanvasElement): CanvasRenderingContext2D {
-  if (!canvas) {
-    throw new Error('not valid canvas element')
-  }
-
-  const ctx = canvas.getContext('2d')
-  const dpr = window.devicePixelRatio || 1
-  const rect = canvas.getBoundingClientRect()
-
-  canvas.width = rect.width * dpr
-  canvas.height = rect.height * dpr
-  ctx && ctx.scale(dpr, dpr)
-
-  return <CanvasRenderingContext2D>ctx
-}
-
-/**
- * 随机数
- */
-function random(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min) * 100) / 100 + min
-}
-
-/**
- * 随机颜色
- */
-function randomRgba(): string {
-  return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
-}
+import { setupCanvas, random, randomRgba, resizeEvent } from './utils'
 
 class Collision {
   private ctx?: CanvasRenderingContext2D
@@ -112,7 +77,7 @@ class Collision {
    *  - 自动处理不同屏幕计算适配
    */
   private _create(): void {
-    const docWidth = this.docEl.clientWidth // 页面可是区域的宽度
+    const docWidth = this.docEl.clientWidth // 页面可视区域的宽度（或实际的页面最大宽度）
     const rateScale = docWidth / this.designWidth // 相对设计稿的缩放倍率
     // 小球半径、圆心坐标，各种尺寸屏幕缩放适配
     const ballsComputed = this.ballsSetting.map(ball => {
