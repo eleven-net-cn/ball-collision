@@ -4,7 +4,7 @@
 
 ## Introduction
 
-- 纯 js 库（gzipped: 2.7 KB）
+- 纯 js 库（gzipped: 2.4 KB）
 
 - 支持 typescript
 
