@@ -11,6 +11,7 @@ declare class Collision {
     private readonly ballsSetting;
     private readonly docEl;
     private readonly designWidth;
+    private readonly scaleInPC;
     /**
      * @param canvas 画板 HTMLElement
      * @param balls 指定的小球集合，允许单独指定配置
@@ -19,8 +20,9 @@ declare class Collision {
      * @param bgColor canvas 画布背景颜色，默认：'transparent' 透明
      * @param docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
      * @param designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
+     * @param scaleInPC PC端是否自动缩放，默认：true，即移动端和 PC 端统一都自动缩放
      */
-    constructor({ canvas, balls, speedMin, speedMax, bgColor, docEl, designWidth }: CollisionConfig);
+    constructor({ canvas, balls, speedMin, speedMax, bgColor, docEl, designWidth, scaleInPC }: CollisionConfig);
     /**
      * 初始化
      */

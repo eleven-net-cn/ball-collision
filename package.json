@@ -1,6 +1,6 @@
 {
   "name": "@eleven.fe/ball-collision",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "小球撞击动画，canvas 绘制。",
   "keywords": [
     "撞击",
@@ -38,7 +38,9 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "prepush": "npm run test:prod && npm run build",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

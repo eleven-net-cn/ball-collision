@@ -3,13 +3,13 @@
  * @Author: Eleven
  * @Date: 2020-07-24 15:04:41
  * @Last Modified by: Eleven
- * @Last Modified time: 2020-07-30 17:58:19
+ * @Last Modified time: 2020-07-31 00:33:50
  */
 
 import { CollisionConfig, BallSetting } from './types'
 import Ball from './Ball'
 import debounce from 'lodash.debounce'
-import { setupCanvas, random, randomRgba, resizeEvent } from './utils'
+import { setupCanvas, random, randomRgba, resizeEvent, isMobile } from './utils'
 
 class Collision {
   private ctx?: CanvasRenderingContext2D
@@ -24,6 +24,7 @@ class Collision {
   private readonly ballsSetting: BallSetting[]
   private readonly docEl: HTMLElement
   private readonly designWidth: number
+  private readonly scaleInPC: boolean
 
   /**
    * @param canvas 画板 HTMLElement
@@ -33,6 +34,7 @@ class Collision {
    * @param bgColor canvas 画布背景颜色，默认：'transparent' 透明
    * @param docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
    * @param designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
+   * @param scaleInPC PC端是否自动缩放，默认：true，即移动端和 PC 端统一都自动缩放
    */
   constructor({
     canvas,
@@ -41,7 +43,8 @@ class Collision {
     speedMax = 2,
     bgColor = 'transparent',
     docEl = document.documentElement,
-    designWidth = 375
+    designWidth = 375,
+    scaleInPC = true
   }: CollisionConfig) {
     if (!canvas) {
       throw new Error('not valid canvas element')
@@ -54,6 +57,7 @@ class Collision {
     this.ballsSetting = balls
     this.docEl = docEl
     this.designWidth = designWidth
+    this.scaleInPC = scaleInPC
 
     this._init()
   }
@@ -78,7 +82,8 @@ class Collision {
    */
   private _create(): void {
     const docWidth = this.docEl.clientWidth // 页面可视区域的宽度（或实际的页面最大宽度）
-    const rateScale = docWidth / this.designWidth // 相对设计稿的缩放倍率
+    // 相对设计稿的缩放倍率（PC 端可配置参数不进行缩放）
+    const rateScale = !this.scaleInPC && !isMobile ? 1 : docWidth / this.designWidth
     // 小球半径、圆心坐标，各种尺寸屏幕缩放适配
     const ballsComputed = this.ballsSetting.map(ball => {
       return {
