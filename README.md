@@ -6,7 +6,7 @@
 
 - 纯 js 库（gzipped: 2.4 KB）
 
-- 支持 typescript（https://eleven90.github.io/ball-collision/）
+- 支持 typescript（ https://eleven90.github.io/ball-collision/ ）
 
 - canvas、window.requestAnimationFrame 绘制动画
 
