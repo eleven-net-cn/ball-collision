@@ -20,7 +20,13 @@
 
     那么此时，你必须要配置 `docEl` 参数，该参数的 clientWidth 应当等于实际的页面宽度。（否则 canvas 画布会与页面等宽，样式展示上会有偏差。）
 
-- 可以使用参数 `designWidth`（默认：375）指定设计稿，小球半径、圆心位置等数值，均是指定设计稿中的数值。
+- 可以使用参数 `designWidth`（默认：375）指定设计稿，小球的半径、圆心位置等数值，均是指定设计稿中的数值。
+
+- 浏览器 resize 或移动端 orientationchange 事件触发时，默认会重新绘制。
+
+    默认情况下，仅浏览器窗口的宽度变化时触发重新绘制。配置参数 `resetOnlyWidth: false` 将会在宽、高任意有变化时重新绘制。画布的大小仅与窗口宽度关联是，建议开启。
+
+    配置参数 `resetOnResize: false` 可以移除窗口变化时重新绘制。画布的宽、高与窗口大小无关联时，建议关闭。
 
 ## Example
 
@@ -63,6 +69,8 @@ npm i @eleven.fe/ball-collision
  *  - docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
  *  - designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
  *  - scaleInPC PC端是否动缩放，默认：true，即在移动端和 PC 端都会自动缩放，如果 PC 端不需要缩放可以配置为 false 关闭
+ *  - resetOnResize 浏览器 resize 或移动端 orientationchange 事件触发时，是否重置画布，默认：true
+ *  - resetOnlyWidth 浏览器 resize 或移动端 orientationchange 事件触发时，仅宽度有变化时，才会 reset，默认：true
  */
 interface CollisionConfig {
   canvas: HTMLCanvasElement | any

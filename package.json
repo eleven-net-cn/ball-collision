@@ -1,6 +1,6 @@
 {
   "name": "@eleven.fe/ball-collision",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "小球撞击动画，canvas 绘制。",
   "keywords": [
     "撞击",
@@ -29,6 +29,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts --environment NODE_ENV:production && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts --environment NODE_ENV:development -w",
+    "serve": "http-server ./ -o",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
@@ -101,6 +102,7 @@
     "coveralls": "^3.0.2",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^2.1.0",
+    "http-server": "^0.12.3",
     "husky": "^1.0.1",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",

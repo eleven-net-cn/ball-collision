@@ -60,6 +60,8 @@
         docEl: _docEl,
         designWidth: designWidth, // 设计稿的宽度，默认：375（所有配置的尺寸、位置等，都是指定宽度的设计稿数值）
         scaleInPC: scaleInPC, // PC 端是否自动缩放（默认：true，在移动端和PC端都会自动缩放，如果 PC 端不需要缩放可以配置为 false 关闭）
+        resetOnResize: true, // 浏览器 resize 或移动端 orientationchange 事件触发时，是否重置画布，默认：true
+        resetOnlyWidth: false, // 浏览器 resize 或移动端 orientationchange 事件触发时，仅宽度有变化时，才会 reset，默认：true
       })
 
       /**

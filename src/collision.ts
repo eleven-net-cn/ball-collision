@@ -3,7 +3,7 @@
  * @Author: Eleven
  * @Date: 2020-07-24 15:04:41
  * @Last Modified by: Eleven
- * @Last Modified time: 2020-07-31 00:33:50
+ * @Last Modified time: 2020-08-15 14:43:21
  */
 
 import { CollisionConfig, BallSetting } from './types'
@@ -16,6 +16,7 @@ class Collision {
   private raf?: number
   private balls: Ball[] = []
   private rectCanvas: any
+  private docElWidth: number
 
   private readonly canvas: HTMLCanvasElement
   private readonly speedMin: number
@@ -25,6 +26,8 @@ class Collision {
   private readonly docEl: HTMLElement
   private readonly designWidth: number
   private readonly scaleInPC: boolean
+  private readonly resetOnResize: boolean
+  private readonly resetOnlyWidth: boolean
 
   /**
    * @param canvas 画板 HTMLElement
@@ -35,6 +38,8 @@ class Collision {
    * @param docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
    * @param designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
    * @param scaleInPC PC端是否自动缩放，默认：true，即移动端和 PC 端统一都自动缩放
+   * @param resetOnResize 浏览器 resize 或移动端 orientationchange 事件触发时，是否重置画布，默认：true
+   * @param resetOnlyWidth 浏览器 resize 或移动端 orientationchange 事件触发时，仅宽度有变化时，才会 reset，默认：true
    */
   constructor({
     canvas,
@@ -44,7 +49,9 @@ class Collision {
     bgColor = 'transparent',
     docEl = document.documentElement,
     designWidth = 375,
-    scaleInPC = true
+    scaleInPC = true,
+    resetOnResize = true,
+    resetOnlyWidth = true
   }: CollisionConfig) {
     if (!canvas) {
       throw new Error('not valid canvas element')
@@ -56,8 +63,11 @@ class Collision {
     this.bgColor = bgColor === 'random' ? randomRgba() : bgColor
     this.ballsSetting = balls
     this.docEl = docEl
+    this.docElWidth = this.docEl.clientWidth
     this.designWidth = designWidth
     this.scaleInPC = scaleInPC
+    this.resetOnResize = resetOnResize
+    this.resetOnlyWidth = resetOnlyWidth
 
     this._init()
   }
@@ -139,13 +149,17 @@ class Collision {
   }
 
   private _bindEvents(): void {
-    window.addEventListener(resizeEvent, this._onResize, false)
+    this.resetOnResize && window.addEventListener(resizeEvent, this._onResize, false)
   }
 
   private _onResize: VoidFunction = debounce(
     () => {
-      this.destroy()
-      this._init()
+      const flag =
+        (this.resetOnlyWidth && this.docElWidth !== this.docEl.clientWidth) || !this.resetOnlyWidth
+      if (flag) {
+        this.destroy()
+        this._init()
+      }
     },
     150,
     { maxWait: 1000 }

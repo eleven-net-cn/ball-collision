@@ -8,6 +8,8 @@
  *  - docEl 页面节点（或可以视作页面实际承载容器的节点），默认：document.documentElement
  *  - designWidth 设计稿的宽度，默认：375（balls 中配置的小球尺寸，应当与此处的设计稿宽度匹配）
  *  - scaleInPC PC端是否动缩放，默认：true，即在移动端和 PC 端都会自动缩放，如果 PC 端不需要缩放可以配置为 false 关闭
+ *  - resetOnResize 浏览器 resize 或移动端 orientationchange 事件触发时，是否重置画布，默认：true
+ *  - resetOnlyWidth 浏览器 resize 或移动端 orientationchange 事件触发时，仅宽度有变化时，才会 reset，默认：true
  */
 export interface CollisionConfig {
   canvas: HTMLCanvasElement | any
@@ -18,6 +20,8 @@ export interface CollisionConfig {
   docEl?: HTMLElement | any
   designWidth?: number
   scaleInPC?: boolean
+  resetOnResize?: boolean
+  resetOnlyWidth?: boolean
 }
 
 /**
