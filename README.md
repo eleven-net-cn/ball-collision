@@ -81,6 +81,8 @@ interface CollisionConfig {
   docEl?: HTMLElement | any
   designWidth?: number
   scaleInPC?: boolean
+  resetOnResize?: boolean
+  resetOnlyWidth?: boolean
 }
 ```
 
