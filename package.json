@@ -10,9 +10,10 @@
     "dist"
   ],
   "author": "Eleven",
+  "homepage": "https://eleven90.github.io/ball-collision/",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Eleven90/ball-collision"
   },
   "license": "MIT",
   "engines": {
