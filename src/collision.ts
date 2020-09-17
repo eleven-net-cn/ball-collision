@@ -3,11 +3,11 @@
  * @Author: Eleven
  * @Date: 2020-07-24 15:04:41
  * @Last Modified by: Eleven
- * @Last Modified time: 2020-08-15 14:43:21
+ * @Last Modified time: 2020-09-17 00:05:23
  */
 
 import { CollisionConfig, BallSetting } from './types'
-import Ball from './Ball'
+import Ball from './ball'
 import debounce from 'lodash.debounce'
 import { setupCanvas, random, randomRgba, resizeEvent, isMobile } from './utils'
 
@@ -51,7 +51,7 @@ class Collision {
     designWidth = 375,
     scaleInPC = true,
     resetOnResize = true,
-    resetOnlyWidth = true
+    resetOnlyWidth = true,
   }: CollisionConfig) {
     if (!canvas) {
       throw new Error('not valid canvas element')
@@ -101,8 +101,8 @@ class Collision {
         ...{
           r: ball.r * rateScale,
           x: ball.x * rateScale,
-          y: ball.y * rateScale
-        }
+          y: ball.y * rateScale,
+        },
       }
     })
 
@@ -120,7 +120,7 @@ class Collision {
           velX: velX || random(speedMin || this.speedMin, speedMax || this.speedMax), // 允许设置单个小球的初始横向位移速度
           velY: velY || random(speedMin || this.speedMin, speedMax || this.speedMax), // 允许设置单个小球的初始纵向位移速度
           speedMin: speedMin || this.speedMin, // 允许设置单个小球的最小速度
-          speedMax: speedMax || this.speedMax // 允许设置单个小球的最大速度
+          speedMax: speedMax || this.speedMax, // 允许设置单个小球的最大速度
         })
     )
   }

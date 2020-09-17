@@ -27,7 +27,7 @@ declare class Collision {
      * @param resetOnResize 浏览器 resize 或移动端 orientationchange 事件触发时，是否重置画布，默认：true
      * @param resetOnlyWidth 浏览器 resize 或移动端 orientationchange 事件触发时，仅宽度有变化时，才会 reset，默认：true
      */
-    constructor({ canvas, balls, speedMin, speedMax, bgColor, docEl, designWidth, scaleInPC, resetOnResize, resetOnlyWidth, }: CollisionConfig);
+    constructor({ canvas, balls, speedMin, speedMax, bgColor, docEl, designWidth, scaleInPC, resetOnResize, resetOnlyWidth }: CollisionConfig);
     /**
      * 初始化
      */

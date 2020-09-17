@@ -1,0 +1,18 @@
+{
+  "inputFiles": ["./src"],
+  "out": "./docs",
+  "target": "es6",
+  "theme": "markdown",
+  "mode": "file",
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeNotExported": true,
+  "hideGenerator": true,
+  "readme": "none",
+  "includeVersion": true,
+  "categorizeByGroup": true,
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ]
+}

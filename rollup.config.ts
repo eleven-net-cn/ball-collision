@@ -1,55 +1,78 @@
+import path from 'path'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
-import typescript from 'rollup-plugin-typescript2'
+import babel from '@rollup/plugin-babel'
+import { DEFAULT_EXTENSIONS } from '@babel/core'
+import alias from '@rollup/plugin-alias'
 import json from '@rollup/plugin-json'
 import { terser } from 'rollup-plugin-terser'
 import banner from 'rollup-plugin-banner'
 import filesize from 'rollup-plugin-filesize'
+import cleaner from 'rollup-plugin-cleaner'
+import eslint from '@rbnlffl/rollup-plugin-eslint'
+import pkg from './package.json'
 
-const pkg = require('./package.json')
 const isProd = process.env.NODE_ENV === 'production'
+
+const pluginsProd = isProd
+  ? [
+      sourceMaps(),
+      terser({
+        compress: {
+          drop_debugger: true,
+        },
+        output: {
+          comments: false,
+          ascii_only: true,
+          beautify: false,
+        },
+      }),
+      banner(
+        `${pkg.name} v${pkg.version}` +
+          `\n` +
+          `Author: ${pkg.author}` +
+          `\n` +
+          `Date: ${new Date()}`
+      ),
+      filesize(),
+      cleaner({
+        targets: ['./dist/'],
+      }),
+    ]
+  : []
 
 export default {
   input: `src/index.ts`,
   output: [
     { file: pkg.main, name: 'BallCollision', format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true }
+    { file: pkg.module, format: 'es', sourcemap: true },
   ],
-  // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
   watch: {
-    include: 'src/**'
+    include: 'src/**',
   },
   plugins: [
-    // Allow json resolution
-    json(),
-    // Compile TypeScript files
-    typescript({ useTsconfigDeclarationDir: true }),
-    // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
-    commonjs(),
-    nodeResolve(),
-    // Resolve source maps to the original source
-    isProd && sourceMaps(),
-    isProd && terser({
-      compress: {
-        drop_debugger: true
+    alias({
+      entries: {
+        '@': path.resolve(__dirname, 'src'),
       },
-      output: {
-        comments: false,
-        ascii_only: true,
-        beautify: false
-      }
     }),
-    isProd && banner(
-      `${pkg.name} v${pkg.version}` +
-        `\n` +
-        `Author: ${pkg.author}` +
-        `\n` +
-        `npmjs.com: https://www.npmjs.com/package/${pkg.name}` +
-        `\n` +
-        `Date: ${new Date()}`
-    ),
-    isProd && filesize()
+    json(),
+    babel({
+      babelHelpers: 'runtime',
+      extensions: [...DEFAULT_EXTENSIONS, '.ts'],
+      exclude: /node_modules/,
+    }),
+    commonjs(),
+    nodeResolve({
+      extensions: [...DEFAULT_EXTENSIONS, '.ts', '.json'],
+    }),
+    eslint({
+      extensions: ['.js', '.ts'],
+      filterInclude: ['src/**'],
+      filterExclude: ['node_modules/**'],
+    }),
+    ...pluginsProd,
   ],
 }

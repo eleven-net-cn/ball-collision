@@ -4,11 +4,16 @@
 
 ## Introduction
 
-- 纯 js 库（gzipped: 2.4 KB）
+- 纯 js 库
 
-- 支持 typescript（ https://eleven90.github.io/ball-collision/ ）
+- 支持 typescript
 
-- canvas、window.requestAnimationFrame 绘制动画
+- canvas、window.requestAnimationFrame 绘制动画。
+
+    移动端对 canvas、window.requestAnimationFrame 的兼容性较好，一般不用担心。具体的兼容性细节如下：
+    
+    1. canvas 兼容 IE 9 及 9 以上；
+    2. requestAnimationFrame 兼容 IE 10 及 10 以上（如果有需要，可以自行引入 [raf](https://github.com/chrisdickinson/raf) 增强兼容性，示例：在全局代码比较早的位置 `import 'raf/polyfill'`）；
 
 - canvas 在移动端高清屏的模糊问题内部已处理，不会有图片模糊的困扰。
 
