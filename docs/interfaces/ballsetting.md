@@ -39,7 +39,7 @@
 
 • **bgColor**? : *undefined | string*
 
-Defined in src/types/index.ts:46
+*Defined in [src/types/index.ts:46](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L46)*
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • **img**? : *HTMLImageElement*
 
-Defined in src/types/index.ts:44
+*Defined in [src/types/index.ts:44](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L44)*
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **imgSrc**? : *undefined | string*
 
-Defined in src/types/index.ts:45
+*Defined in [src/types/index.ts:45](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L45)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **r**: *number*
 
-Defined in src/types/index.ts:43
+*Defined in [src/types/index.ts:43](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L43)*
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 • **speedMax**? : *undefined | number*
 
-Defined in src/types/index.ts:50
+*Defined in [src/types/index.ts:50](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L50)*
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 • **speedMin**? : *undefined | number*
 
-Defined in src/types/index.ts:49
+*Defined in [src/types/index.ts:49](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L49)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **velX**? : *undefined | number*
 
-Defined in src/types/index.ts:47
+*Defined in [src/types/index.ts:47](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L47)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • **velY**? : *undefined | number*
 
-Defined in src/types/index.ts:48
+*Defined in [src/types/index.ts:48](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L48)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 • **x**: *number*
 
-Defined in src/types/index.ts:41
+*Defined in [src/types/index.ts:41](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L41)*
 
 ___
 
@@ -111,4 +111,4 @@ ___
 
 • **y**: *number*
 
-Defined in src/types/index.ts:42
+*Defined in [src/types/index.ts:42](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L42)*

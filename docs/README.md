@@ -36,7 +36,7 @@
 
 • **isAndroid**: *boolean* = /android/i.test(ua)
 
-Defined in src/utils.ts:4
+*Defined in [src/utils.ts:4](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L4)*
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • **isIOS**: *boolean* = /(ipad|iphone|ipod)/i.test(ua)
 
-Defined in src/utils.ts:3
+*Defined in [src/utils.ts:3](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L3)*
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **isMobile**: *boolean* = isIOS || isAndroid || isWinPhone
 
-Defined in src/utils.ts:6
+*Defined in [src/utils.ts:6](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L6)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **isWinPhone**: *boolean* = /windows phone/i.test(ua)
 
-Defined in src/utils.ts:5
+*Defined in [src/utils.ts:5](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L5)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **resizeEvent**: *"orientationchange" | "resize"* = 'orientationchange' in window ? 'orientationchange' : 'resize'
 
-Defined in src/utils.ts:36
+*Defined in [src/utils.ts:36](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L36)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **ua**: *string* = window.navigator.userAgent
 
-Defined in src/utils.ts:1
+*Defined in [src/utils.ts:1](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L1)*
 
 ## Functions
 
@@ -84,7 +84,7 @@ Defined in src/utils.ts:1
 
 ▸ **random**(`min`: number, `max`: number): *number*
 
-Defined in src/utils.ts:28
+*Defined in [src/utils.ts:28](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L28)*
 
 **Parameters:**
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **randomRgba**(): *string*
 
-Defined in src/utils.ts:32
+*Defined in [src/utils.ts:32](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L32)*
 
 **Returns:** *string*
 
@@ -111,7 +111,7 @@ ___
 
 ▸ **setupCanvas**(`canvas`: HTMLCanvasElement): *CanvasRenderingContext2D*
 
-Defined in src/utils.ts:12
+*Defined in [src/utils.ts:12](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/utils.ts#L12)*
 
 创建绘图
  - 移动端保持高清：https://www.html5rocks.com/en/tutorials/canvas/hidpi/

@@ -24,7 +24,7 @@
 
 \+ **new Ball**(`__namedParameters`: object): *[Ball](ball.md)*
 
-Defined in src/ball.ts:24
+*Defined in [src/ball.ts:24](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/ball.ts#L24)*
 
 **Parameters:**
 
@@ -52,7 +52,7 @@ Name | Type | Description |
 
 ▸ **detect**(`balls`: [Ball](ball.md)[]): *[Ball](ball.md)[]*
 
-Defined in src/ball.ts:98
+*Defined in [src/ball.ts:98](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/ball.ts#L98)*
 
 检测撞击
 
@@ -70,7 +70,7 @@ ___
 
 ▸ **draw**(): *void*
 
-Defined in src/ball.ts:58
+*Defined in [src/ball.ts:58](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/ball.ts#L58)*
 
 绘制小球
  - 即使图片非圆形也可以
@@ -83,7 +83,7 @@ ___
 
 ▸ **update**(): *void*
 
-Defined in src/ball.ts:129
+*Defined in [src/ball.ts:129](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/ball.ts#L129)*
 
 更新位移
 

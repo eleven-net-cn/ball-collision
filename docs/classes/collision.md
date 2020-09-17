@@ -22,7 +22,7 @@
 
 \+ **new Collision**(`__namedParameters`: object): *[Collision](collision.md)*
 
-Defined in src/collision.ts:30
+*Defined in [src/collision.ts:30](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/collision.ts#L30)*
 
 **Parameters:**
 
@@ -49,7 +49,7 @@ Name | Type | Default | Description |
 
 ▸ **destroy**(): *void*
 
-Defined in src/collision.ts:171
+*Defined in [src/collision.ts:171](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/collision.ts#L171)*
 
 销毁 animation frame
 

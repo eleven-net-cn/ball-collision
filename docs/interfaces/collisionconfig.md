@@ -39,7 +39,7 @@ Collision 初始化配置【docEl、designWidth 是自动处理页面尺寸适�
 
 • **balls**: *[BallSetting](ballsetting.md)[]*
 
-Defined in src/types/index.ts:16
+*Defined in [src/types/index.ts:16](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L16)*
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • **bgColor**? : *undefined | string*
 
-Defined in src/types/index.ts:19
+*Defined in [src/types/index.ts:19](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L19)*
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **canvas**: *HTMLCanvasElement | any*
 
-Defined in src/types/index.ts:15
+*Defined in [src/types/index.ts:15](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L15)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **designWidth**? : *undefined | number*
 
-Defined in src/types/index.ts:21
+*Defined in [src/types/index.ts:21](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L21)*
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 • **docEl**? : *HTMLElement | any*
 
-Defined in src/types/index.ts:20
+*Defined in [src/types/index.ts:20](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L20)*
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 • **resetOnResize**? : *undefined | false | true*
 
-Defined in src/types/index.ts:23
+*Defined in [src/types/index.ts:23](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L23)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **resetOnlyWidth**? : *undefined | false | true*
 
-Defined in src/types/index.ts:24
+*Defined in [src/types/index.ts:24](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L24)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • **scaleInPC**? : *undefined | false | true*
 
-Defined in src/types/index.ts:22
+*Defined in [src/types/index.ts:22](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L22)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 • **speedMax**? : *undefined | number*
 
-Defined in src/types/index.ts:18
+*Defined in [src/types/index.ts:18](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L18)*
 
 ___
 
@@ -111,4 +111,4 @@ ___
 
 • **speedMin**? : *undefined | number*
 
-Defined in src/types/index.ts:17
+*Defined in [src/types/index.ts:17](https://github.com/Eleven90/ball-collision/blob/9b6febd/src/types/index.ts#L17)*
