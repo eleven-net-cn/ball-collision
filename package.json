@@ -1,6 +1,6 @@
 {
   "name": "ball-collision",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "canvas 绘制小球撞击动画",
   "keywords": [],
   "main": "dist/ball-collision.js",
