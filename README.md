@@ -294,9 +294,9 @@ function random(min, max) {
 }
 ```
 
-## Using in React & Hooks & Typescript
+## Using in React & Hooks & TypeScript
 
-```js
+```tsx
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import BallCollision, { BallSetting } from '@eleven.fe/ball-collision';
@@ -346,7 +346,7 @@ const balls: BallSetting[] = [
 ];
 
 export default function Ball() {
-  let canvasEl = useRef < HTMLCanvasElement > null;
+  let canvasEl = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     // 初始化
