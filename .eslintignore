@@ -1,4 +1,3 @@
-**/.vscode
 **/node_modules
 /node_modules
 
@@ -6,3 +5,5 @@
 /demo
 /dist
 /docs
+
+.eslintrc.js

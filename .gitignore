@@ -8,10 +8,8 @@ compiled
 .awcache
 .rpt2_cache
 
-package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/coverage
-/dist
+dist
