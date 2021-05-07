@@ -47,8 +47,11 @@
     }
   },
   "lint-staged": {
-    "*.{js?(x),ts?(x),json,css,scss,less,html,md}": [
+    "*.{js?(x),json,css,scss,less,html,md}": [
       "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
     ],
     "src/**/*.{js?(x),ts?(x)}": [
       "npm run lint:fix"
