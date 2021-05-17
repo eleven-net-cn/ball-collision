@@ -1,5 +1,5 @@
 {
-  "name": "ball-collision",
+  "name": "@eleven.fe/ball-collision",
   "version": "1.4.0",
   "description": "canvas 绘制小球撞击动画",
   "keywords": [],
