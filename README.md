@@ -350,9 +350,9 @@ export default function Ball() {
 
   useEffect(() => {
     // 初始化
-    canvasEl &&
+    canvasEl.current &&
       new BallCollision({
-        canvas: canvasEl,
+        canvas: canvasEl.current,
         balls,
         speedMin: -2,
         speedMax: 2,
@@ -360,14 +360,6 @@ export default function Ball() {
       });
   }, []);
 
-  return (
-    <>
-      <CanvasWrapper
-        ref={(el: any) => {
-          canvasEl = el;
-        }}
-      />
-    </>
-  );
+  return <CanvasWrapper ref={canvasEl} />;
 }
 ```

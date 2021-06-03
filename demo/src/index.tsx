@@ -15,9 +15,9 @@ const App = () => {
 
   useEffect(() => {
     // 初始化
-    canvasEl &&
+    canvasEl.current &&
       new BallCollision({
-        canvas: canvasEl,
+        canvas: canvasEl.current,
         balls,
         speedMin: -0.5,
         speedMax: 0.5,
@@ -25,15 +25,7 @@ const App = () => {
       });
   }, []);
 
-  return (
-    <>
-      <CanvasWrapper
-        ref={(el: any) => {
-          canvasEl = el;
-        }}
-      />
-    </>
-  );
+  return <CanvasWrapper ref={canvasEl} />;
 };
 
 render(<App />, document.getElementById('root'));
