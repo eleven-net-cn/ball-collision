@@ -38,7 +38,7 @@
     "release:major": "standard-version --releaseAs major"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
+    "pre-commit": "lint-staged --allow-empty",
     "commit-msg": "commitlint -E GIT_PARAMS"
   },
   "config": {
