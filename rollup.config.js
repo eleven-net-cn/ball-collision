@@ -1,32 +1,33 @@
 import path from 'path';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { nodeResolve, DEFAULTS } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import alias from '@rollup/plugin-alias';
 import json from '@rollup/plugin-json';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import builtins from 'rollup-plugin-node-builtins';
+import url from '@rollup/plugin-url';
 import { terser } from 'rollup-plugin-terser';
 import filesize from 'rollup-plugin-filesize';
 import replace from '@rollup/plugin-replace';
-import camelCase from 'lodash.camelcase';
+import camelcase from 'camelcase';
 import cleaner from 'rollup-plugin-cleaner';
-import eslint from '@rbnlffl/rollup-plugin-eslint';
+import eslint from '@rollup/plugin-eslint';
 import pkg from './package.json';
 
 const libraryName = 'ball-collision';
+const libraryNamePascalCase = camelcase(libraryName, { pascalCase: true });
 const isProd = process.env.NODE_ENV === 'production';
 
-const toBigCamelCase = str => {
-  const camelStr = camelCase(str);
-  return `${camelStr.charAt(0).toUpperCase()}${camelStr.substring(1)}`;
-};
-
 const plugins = [
-  commonjs(),
+  builtins(),
+  url(),
   nodeResolve({
-    extensions: [...DEFAULT_EXTENSIONS, '.ts', '.json'],
+    extensions: [...DEFAULTS.extensions, '.ts'],
+    mainFields: ['browser', 'jsnext:main', 'module', 'main'],
   }),
+  commonjs(),
   alias({
     entries: {
       '@': path.resolve(__dirname, 'src'),
@@ -43,11 +44,6 @@ const plugins = [
     babelHelpers: 'runtime',
     extensions: [...DEFAULT_EXTENSIONS, '.ts'],
     exclude: /node_modules/,
-  }),
-  eslint({
-    extensions: ['.js', '.ts'],
-    filterInclude: ['src/**'],
-    filterExclude: ['node_modules/**'],
   }),
   isProd && filesize(),
 ].filter(Boolean);
@@ -77,6 +73,14 @@ export default [
         cleaner({
           targets: ['./dist/'],
         }),
+      /**
+       * https://github.com/rollup/plugins/tree/master/packages/eslint
+       * - 注意放到靠前位置
+       */
+      eslint({
+        fix: true,
+        include: ['src/**/*.{js?(x),ts?(x)}'],
+      }),
       ...plugins,
       /**
        * cjs、es 模块，第三方依赖不编译到产物中
@@ -95,7 +99,7 @@ export default [
         file: pkg.unpkg,
         format: 'umd',
         exports: 'named',
-        name: toBigCamelCase(libraryName),
+        name: libraryNamePascalCase,
         // 不想要打包到产物的第三方依赖，在此处声明外部引入时的全局对象名
         // https://www.rollupjs.org/guide/en/#outputglobals
         globals: {
