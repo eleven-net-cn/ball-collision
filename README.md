@@ -294,7 +294,7 @@ function random(min, max) {
 }
 ```
 
-## Using in React & Hooks & TypeScript
+## Usage in React Hooks & TypeScript
 
 ```tsx
 import React, { useRef, useEffect } from 'react';
