@@ -1,6 +1,10 @@
 # [ball-collision](https://www.npmjs.com/package/@eleven.fe/ball-collision)
 
-[![NPM version](https://img.shields.io/npm/v/@eleven.fe/ball-collision?color=a1b858&label=)](https://www.npmjs.com/package/@eleven.fe/ball-collision)
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
+
+[npm-url]: https://npmjs.org/package/@eleven.fe/ball-collision
+[downloads-image]: https://img.shields.io/npm/dt/@eleven.fe/ball-collision.svg
+[npm-image]: https://img.shields.io/npm/v/@eleven.fe/ball-collision.svg
 
 小球撞击动画，canvas 绘制。
 
