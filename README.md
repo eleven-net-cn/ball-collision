@@ -10,9 +10,9 @@
 
 ## Introduction
 
-- 纯 js 库
+- 纯 JS 库
 
-- 支持 typescript
+- 支持 TypeScript
 
 - canvas、window.requestAnimationFrame 绘制动画。
 
