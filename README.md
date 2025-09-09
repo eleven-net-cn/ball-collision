@@ -6,7 +6,7 @@
 [downloads-image]: https://img.shields.io/npm/dt/@eleven.fe/ball-collision.svg
 [npm-image]: https://img.shields.io/npm/v/@eleven.fe/ball-collision.svg
 
-小球撞击动画，canvas 绘制。
+Ball Collision SDK
 
 ## Introduction
 
